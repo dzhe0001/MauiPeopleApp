@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Windows.Input;
 using MauiPeopleApp.Models;
 using MauiPeopleApp.Services;
-using MauiPeopleApp.Views;
 
 namespace MauiPeopleApp.ViewModels;
 
@@ -21,7 +20,7 @@ public class PersonListViewModel : BaseViewModel
         LoadPeopleCommand = new Command(async () => await LoadPeople());
     }
 
-    private async Task LoadPeople()
+    public async Task LoadPeople()
     {
         if (IsBusy) return;
         IsBusy = true;

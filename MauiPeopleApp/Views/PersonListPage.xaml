@@ -1,19 +1,28 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiPeopleApp.Views.PersonListPage"
              Title="People">
-    <CollectionView ItemsSource="{Binding People}" SelectionMode="Single" SelectionChanged="OnSelectionChanged">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="10" ColumnDefinitions="60,*,Auto" RowDefinitions="Auto">
-                    <Image Source="{Binding avata}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" />
-                    <VerticalStackLayout Grid.Column="1" Margin="10,0">
-                        <Label Text="{Binding fulName}" FontAttributes="Bold" />
-                        <Label Text="{Binding email}" FontSize="Small" TextColor="Gray" />
-                    </VerticalStackLayout>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+
+    <RefreshView IsRefreshing="{Binding IsBusy}" Command="{Binding LoadPeopleCommand}">
+        <CollectionView x:Name="PeopleCollection"
+                        ItemsSource="{Binding People}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="12" ColumnDefinitions="60,*,Auto" RowDefinitions="Auto,Auto">
+                        <Image Source="{Binding Avatar}" WidthRequest="48" HeightRequest="48" Aspect="AspectFill" 
+                               VerticalOptions="Center" HorizontalOptions="Center">
+                            <Image.Clip>
+                                <EllipseGeometry Center="24,24" RadiusX="24" RadiusY="24"/>
+                            </Image.Clip>
+                        </Image>
+                        <Label Grid.Column="1" Text="{Binding FullName}" FontAttributes="Bold" />
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Email}" Opacity="0.7" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
 </ContentPage>

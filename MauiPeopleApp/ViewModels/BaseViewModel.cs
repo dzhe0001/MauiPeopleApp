@@ -13,7 +13,7 @@ public class BaseViewModel : INotifyPropertyChanged
         set => SetProperty(ref isBusy, value);
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     protected void OnPropertyChanged([CallerMemberName] string name = null)
     {
