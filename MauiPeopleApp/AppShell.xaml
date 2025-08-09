@@ -5,11 +5,6 @@
     xmlns:views="clr-namespace:MauiPeopleApp.Views"
     x:Class="MauiPeopleApp.AppShell"
     Shell.FlyoutBehavior="Disabled">
-
-    <TabBar>
-        <Tab Title="People">
-            <ShellContent Title="Login" ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
-            <ShellContent Title="People" ContentTemplate="{DataTemplate views:PersonListPage}" />
-        </Tab>
-    </TabBar>
+        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
+        <ShellContent ContentTemplate="{DataTemplate views:PersonListPage}" />
 </Shell>

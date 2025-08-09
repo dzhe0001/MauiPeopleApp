@@ -12,15 +12,10 @@ namespace MauiPeopleApp.ViewModels
         [RelayCommand]
         public async Task LoginWithFingerprint()
         {
-#if IOS
-            await App.Current.MainPage.DisplayAlert("Platform", "You're on iOS", "OK");
-#endif
-            // var isAvailable = await CrossFingerprint.Current.IsAvailableAsync();
             var isAvailable = false;
             try
             {
                 isAvailable = await CrossFingerprint.Current.IsAvailableAsync(allowAlternativeAuthentication:true);
-                await App.Current.MainPage.DisplayAlert("Info", $"Biometric available: {isAvailable}", "OK");
             }
             catch (Exception ex)
             {
