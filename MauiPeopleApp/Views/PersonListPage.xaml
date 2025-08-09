@@ -11,15 +11,32 @@
                         SelectionChanged="OnSelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="12" ColumnDefinitions="60,*,Auto" RowDefinitions="Auto,Auto">
-                        <Image Source="{Binding Avatar}" WidthRequest="48" HeightRequest="48" Aspect="AspectFill" 
-                               VerticalOptions="Center" HorizontalOptions="Center">
-                            <Image.Clip>
-                                <EllipseGeometry Center="24,24" RadiusX="24" RadiusY="24"/>
-                            </Image.Clip>
-                        </Image>
-                        <Label Grid.Column="1" Text="{Binding FullName}" FontAttributes="Bold" />
-                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Email}" Opacity="0.7" />
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Column 1: Image -->
+                        <Image Source="{Binding Avatar}"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               Aspect="AspectFill"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Margin="0,0,10,0" />
+
+                        <!-- Column 2: Text Stack -->
+                        <StackLayout Grid.Column="1"
+                                     VerticalOptions="Center"
+                                     Spacing="2">
+                            <Label Text="{Binding FullName}"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium" />
+                            <Label Text="{Binding Email}"
+                                   FontSize="Small"
+                                   TextColor="Gray" />
+                        </StackLayout>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -8,6 +8,7 @@
 
     <TabBar>
         <Tab Title="People">
+            <ShellContent Title="Login" ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
             <ShellContent Title="People" ContentTemplate="{DataTemplate views:PersonListPage}" />
         </Tab>
     </TabBar>
